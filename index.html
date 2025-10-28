@@ -1,89 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Card</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Gilroy', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      background-color: black;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #card {
+      background-color: aqua;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      padding: 20px;
+      width: 90%;
+      max-width: 320px;
+      aspect-ratio: 3 / 4; /* maintains perfect proportion */
+    }
+
+    #card img {
+      border-radius: 50%;
+      width: 60%;
+      height: auto;
+      object-fit: cover;
+      max-width: 180px;
+      aspect-ratio: 1 / 1;
+      margin-bottom: 15px;
+      border: 3px solid white;
+    }
+
+    #card button {
+      border-radius: 12px;
+      padding: 10px 20px;
+      background-color: pink;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #card button:hover {
+      transform: scale(1.05);
+    }
+
+    /* 🔹 Responsive Adjustments */
+    @media (max-width: 768px) {
+      #card {
+        width: 80%;
+        max-width: 280px;
+        padding: 15px;
+      }
+
+      #card img {
+        width: 70%;
+      }
+
+      #card button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #card {
+        width: 90%;
+        max-width: 250px;
+        padding: 10px;
+      }
+
+      #card img {
+        width: 75%;
+      }
+
+      #card button {
+        padding: 7px 14px;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div id="card">
-        <img src="IMG-20250318-WA0014.jpg" id="image">
-<button id="btn">Change image</button>
-    </div>
-    <style>
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: 'Gilroy', sans-serif;
-        }
-        
-        html, body {
-          height: 100%;
-          width: 100%;
-        }
-        
-        body {
-          background-color: black;
-          color: #333;
-          display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #card{
-            height: 60%;
-            width: 20%;
-            background-color: aqua;
-            display: flex;
-            flex-direction: column;
-            border-radius: 15px;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 10px 3px 13px white;
-        }
-        #card img{
-            border-radius: 50%;
-            height: 32%;
-            width: 49%;
-            object-fit: cover;
+  <div id="card">
+    <img src="IMG-20250318-WA0014.jpg" id="image">
+    <button id="btn">Change image</button>
+  </div>
 
-        }
-        #card button{
-            margin: 13px;
-            border-radius: 13px;
-            padding: 3px;
-            background-color: pink;
-        }
-    </style>
-    <script>
-        let btn = document.querySelector('#btn')
-        let img = document.querySelector('#image')
-        let flag =0
-        btn.addEventListener('click',function(){
-            if(flag==0){
-          image.src = 'IMG_20231230_194447.jpg' 
-          btn.style.backgroundColor = 'brown'
-          flag =1; 
-            }else if(flag==1){
-            image.src = 'IMG-20250318-WA0014.jpg'
-          btn.style.backgroundColor = 'purple'
+  <script>
+    let btn = document.querySelector('#btn');
+    let image = document.querySelector('#image');
+    let flag = 0;
 
-            flag=2
-            }else if(flag==2){
-                image.src = 'Screenshot_2025-02-27-20-53-57-60_965bbf4d18d205f782c6b8409c5773a4.jpg'
-          btn.style.backgroundColor = 'yellow'
-
-                flag=3;
-            }else{
-                image.src ='IMG-20250318-WA0014.jpg'
-          btn.style.backgroundColor = 'pink'
-
-                flag =0;
-            }
-
-        })
-
-
-    </script>
+    btn.addEventListener('click', function() {
+      if (flag == 0) {
+        image.src = 'IMG_20231230_194447.jpg';
+        btn.style.backgroundColor = 'brown';
+        flag = 1;
+      } else if (flag == 1) {
+        image.src = 'IMG-20250318-WA0014.jpg';
+        btn.style.backgroundColor = 'purple';
+        flag = 2;
+      } else if (flag == 2) {
+        image.src = 'Screenshot_2025-02-27-20-53-57-60_965bbf4d18d205f782c6b8409c5773a4.jpg';
+        btn.style.backgroundColor = 'yellow';
+        flag = 3;
+      } else {
+        image.src = 'IMG-20250318-WA0014.jpg';
+        btn.style.backgroundColor = 'pink';
+        flag = 0;
+      }
+    });
+  </script>
 </body>
 </html>
